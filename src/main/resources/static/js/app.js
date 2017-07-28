@@ -29,6 +29,17 @@
      */
     app.controller('HomeController', function ($rootScope, $scope, $http, $location) {
         $rootScope.greeting = 'Hello';
+        $scope.data = null;
+
+        $http({
+            method: 'GET',
+            url: '/parser'
+        }).then(function successCallback(response) {
+            $scope.data = response.data;
+        }, function errorCallback(response) {
+            $scope.data = response;
+        });
+
     });
 
 }).call(this);
