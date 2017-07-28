@@ -1,71 +1,71 @@
 asyncapi: '1.0.0'
 info:
-  title: 'MDM - Master Data Management'
+  title: 'ABC - Test Data Management'
   version: '1.0.0'
-baseTopic: 'mdm'
-host: 'local.umantis.lan:61616'
+baseTopic: 'abc'
+host: 'server1:61616'
 schemes:
   - 'amqp'
 
 topics:
-  mdm.idm_topic:
+  abc.car_topic:
     subscribe:
-      - $ref: "#/components/messages/identity_created"
-      - $ref: "#/components/messages/identity_updated"
-      - $ref: "#/components/messages/identity_deleted"
-  mdm.rdm_topic:
+      - $ref: "#/components/messages/car_created"
+      - $ref: "#/components/messages/car_updated"
+      - $ref: "#/components/messages/car_deleted"
+  abc.person_topic:
     subscribe:
-      - $ref: "#/components/messages/reference_data_created"
-      - $ref: "#/components/messages/reference_data_updated"
-      - $ref: "#/components/messages/reference_data_deleted"
+      - $ref: "#/components/messages/person_created"
+      - $ref: "#/components/messages/person_updated"
+      - $ref: "#/components/messages/person_deleted"
 
 components:
   messages:
-    identity_created:
-      summary: An identity was created
-      description: A message notifying an identity has been created.
+    person_created:
+      summary: An person was created
+      description: A message notifying an person has been created.
       payload:
         type: object
         properties:
-          $ref: "#/components/schemas/mdm_event"
-    identity_updated:
-      summary: An identity was updated
-      description: A message notifying an identity has been updated.
+          $ref: "#/components/schemas/common_event"
+    person_updated:
+      summary: An person was updated
+      description: A message notifying an person has been updated.
       payload:
         type: object
         properties:
-          $ref: "#/components/schemas/mdm_event"
-    identity_deleted:
-      summary: An identity was deleted
-      description: A message notifying an identity has been deleted.
+          $ref: "#/components/schemas/common_event"
+    person_deleted:
+      summary: An person was deleted
+      description: A message notifying an person has been deleted.
       payload:
         type: object
         properties:
-          $ref: "#/components/schemas/mdm_event"
-    reference_data_created:
-      summary: A reference data registry was created
-      description: A message notifying a reference data registry has been created.
+          $ref: "#/components/schemas/common_event"
+    car_created:
+      summary: A car was created
+      description: A message notifying a car has been created.
       payload:
         type: object
         properties:
-          $ref: "#/components/schemas/mdm_event"
-    reference_data_updated:
-      summary: A reference data registry was updated
-      description: A message notifying a reference data registry has been updated.
+          $ref: "#/components/schemas/common_event"
+    car_updated:
+      summary: A car was updated
+      description: A message notifying a car has been updated.
       payload:
         type: object
         properties:
-          $ref: "#/components/schemas/mdm_event"
-    reference_data_deleted:
-      summary: A reference data registry was deleted
-      description: A message notifying a reference data registry has been deleted.
+          $ref: "#/components/schemas/common_event"
+    car_deleted:
+      summary: A car was deleted
+      description: A message notifying a car has been deleted.
       payload:
         type: object
         properties:
-          $ref: "#/components/schemas/mdm_event"
+          $ref: "#/components/schemas/common_event"
           
   schemas:
-    mdm_event:
+    common_event:
       type: object
       required:
         - entity_id
@@ -83,5 +83,5 @@ components:
             UPDATE
             DELETE
         link:
-          description: The entity callback link to MDM
+          description: The entity callback link to ABC
           type: string
