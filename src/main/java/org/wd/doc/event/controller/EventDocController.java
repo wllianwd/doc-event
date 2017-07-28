@@ -16,7 +16,7 @@ import java.util.Map;
 @RestController
 public class EventDocController {
 
-    @Value("classpath:mdm-events-blueprint.yaml")
+    @Value("classpath:abc-events-blueprint.yaml")
     private Resource yamlFile;
 
     private final ObjectMapper objectMapper;
